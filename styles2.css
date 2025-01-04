@@ -1,0 +1,870 @@
+/* ==========================================================================
+   1. Root Variables & Typography
+   ========================================================================== */
+:root {
+    /* Colors */
+    --primary-color: #FF5733;    /* Charizard orange */
+    --secondary-color: #4A90E2;  /* Mega X blue */
+    --tertiary-color: #9B59B6;   /* Mega Y purple */
+    --background-dark: #1a1a1a;
+    --text-light: #f5f5f5;
+    --text-dark: #333;
+    --card-bg: #ffffff;
+
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-lg: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Base Typography */
+@media (min-width: 320px) {
+    html { font-size: 14px; }
+}
+@media (min-width: 768px) {
+    html { font-size: 16px; }
+}
+@media (min-width: 1200px) {
+    html { font-size: 18px; }
+}
+
+/* ==========================================================================
+   2. Reset & Base Styles
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    min-height: 100vh;
+    padding: 0 var(--space-md);
+}
+
+/* ==========================================================================
+   3. Layout Components
+   ========================================================================== */
+/* Card Container - Base for all card-like elements */
+.card-container {
+    background: var(--card-bg);
+    margin: var(--space-md) auto;
+    padding: var(--space-lg);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    max-width: 1200px;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.card-container:hover {
+    transform: translateY(-2px);
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #FF8C00 100%);
+    color: var(--text-light);
+    padding: var(--space-xl) var(--space-md);
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    margin: calc(-1 * var(--space-md));
+    margin-bottom: var(--space-md);
+}
+
+/* ==========================================================================
+   4. Typography Components
+   ========================================================================== */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+}
+
+h2 {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-md);
+    color: var(--primary-color);
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.japanese {
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 500;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* ==========================================================================
+   5. Content Components
+   ========================================================================== */
+/* Philosophical Quote */
+.philosophical-quote {
+    font-family: 'Merriweather', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: var(--space-md) auto;
+    padding: var(--space-md);
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    max-width: 800px;
+}
+
+.quote-author {
+    font-style: normal;
+    opacity: 0.8;
+    font-size: 0.9em;
+}
+
+/* Enhanced Logic Statement Layout */
+.logic-statement {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-md);
+    background: #f8f9fa;
+    padding: var(--space-lg);
+    border-radius: 8px;
+    margin: var(--space-md) 0;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Logic Expression Styling */
+.logic-expression {
+    font-family: 'Fira Code', monospace;
+    padding: var(--space-md);
+    background: var(--background-dark);
+    border-radius: 6px;
+    color: var(--text-light);
+}
+
+/* Color coding for logical elements */
+.quantifier { color: #FF9E64; }     /* Orange for quantifiers */
+.operator { color: #7AA2F7; }       /* Blue for logical operators */
+.predicate { color: #9ECE6A; }      /* Green for predicates */
+.variable { color: #BB9AF7; }       /* Purple for variables */
+.constant { color: #F7768E; }       /* Red for constants */
+.bracket { color: #E0AF68; }        /* Yellow for brackets */
+
+/* Natural Language Column */
+.natural-language {
+    background: #1a1a1a;
+    color: var(--text-light);
+    border-radius: 0 6px 6px 0;
+    padding: 0;
+}
+
+.translation-header {
+    background: rgba(255,87,51,0.2);
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.translation-main {
+    padding: var(--space-md);
+}
+
+.logic-label {
+    color: #7AA2F7;
+    font-weight: 600;
+    display: block;
+    margin-bottom: var(--space-xs);
+}
+
+.quantifier-block,
+.condition-block,
+.implication-block {
+    margin-bottom: var(--space-md);
+}
+
+.natural-language .variable { color: #BB9AF7; }
+.natural-language .predicate { color: #9ECE6A; }
+.natural-language .constant { color: #F7768E; }
+
+.natural-language ul {
+    list-style: none;
+    margin: var(--space-xs) 0;
+}
+
+.natural-language li {
+    margin: var(--space-xs) 0;
+}
+
+.natural-language .indent-1 { margin-left: var(--space-md); }
+.natural-language .indent-2 { margin-left: calc(var(--space-md) * 2); }
+
+.step-by-step {
+    margin-top: var(--space-sm);
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.step-by-step li {
+    margin: var(--space-xs) 0;
+    padding-left: var(--space-sm);
+}
+
+/* KaTeX Overrides */
+.katex-display {
+    margin: var(--space-sm) 0 !important;
+    padding: 0 !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.katex {
+    text-rendering: auto;
+    font-size: 1rem !important;
+}
+
+/* Symbol Legend */
+.symbol-legend ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+}
+
+.symbol-legend li {
+    margin: var(--space-xs) 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Collapsible */
+.collapsible {
+    background: var(--primary-color);
+    color: var(--text-light);
+    cursor: pointer;
+    padding: var(--space-md);
+    width: 100%;
+    border: none;
+    text-align: left;
+    border-radius: 4px;
+    transition: 0.3s;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.collapsible:hover {
+    background: #FF6B33;
+}
+
+.content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: var(--card-bg);
+}
+
+/* ==========================================================================
+   6. Responsive Design
+   ========================================================================== */
+@media (max-width: 768px) {
+    .card-container {
+        margin: var(--space-sm);
+        padding: var(--space-md);
+    }
+
+    .logic-statement {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+    }
+
+    header {
+        margin: calc(-1 * var(--space-md));
+        margin-bottom: var(--space-sm);
+        padding: var(--space-lg) var(--space-md);
+    }
+
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+
+    .natural-language {
+        border-radius: 6px;
+        margin-top: var(--space-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --space-md: 0.75rem;
+        --space-lg: 1rem;
+        --space-xl: 1.5rem;
+    }
+
+    .card-container {
+        margin: var(--space-xs);
+        padding: var(--space-md);
+    }
+
+    .logic-statement {
+        padding: var(--space-sm);
+    }
+
+    .katex { font-size: 0.9rem !important; }
+
+    .natural-language {
+        font-size: 0.85rem;
+        padding: var(--space-sm);
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .card-container {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .collapsible {
+        display: none;
+    }
+
+    .content {
+        max-height: none;
+        display: block;
+    }
+}
+
+/* Context Section Styling */
+.context-section {
+    margin-bottom: var(--space-xl);
+}
+
+.context-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.context-card {
+    background: rgba(255,87,51,0.05);
+    padding: var(--space-md);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.context-card h4 {
+    color: var(--primary-color);
+    margin-bottom: var(--space-sm);
+    font-size: 1.1rem;
+}
+
+.context-card p {
+    margin-bottom: var(--space-sm);
+    line-height: 1.6;
+}
+
+.evolution-chain {
+    list-style: none;
+    padding: 0;
+}
+
+.evolution-chain li {
+    margin: var(--space-xs) 0;
+    padding-left: var(--space-sm);
+    position: relative;
+}
+
+.stage {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-right: var(--space-xs);
+}
+
+.characteristics {
+    list-style: none;
+    padding: 0;
+}
+
+.characteristics li {
+    margin: var(--space-xs) 0;
+    padding-left: var(--space-md);
+    position: relative;
+}
+
+.characteristics li::before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .context-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+    }
+
+    .context-card {
+        padding: var(--space-sm);
+    }
+}
+
+/* Add new color coding for modal, temporal, and type theory operators */
+.modal { color: #FF79C6; }     /* Pink for modal operators */
+.temporal { color: #8BE9FD; }  /* Cyan for temporal operators */
+.type { color: #50FA7B; }      /* Bright green for types */
+
+/* Add specific styling for new blocks */
+.modal-block,
+.temporal-block,
+.type-block {
+    margin-bottom: var(--space-md);
+}
+
+.modal-block .modal,
+.temporal-block .temporal,
+.type-block .type {
+    font-weight: 600;
+}
+
+/* Add new color coding for additional logical systems */
+.linear { color: #BD93F9; }    /* Purple for linear logic operators */
+.category { color: #FFB86C; }   /* Orange for categorical operators */
+
+/* Add specific styling for new blocks */
+.linear-block,
+.higher-order-block,
+.category-block {
+    margin-bottom: var(--space-md);
+}
+
+.linear-block .linear,
+.higher-order-block .type,
+.category-block .category {
+    font-weight: 600;
+}
+
+/* Add new color coding for additional logical systems */
+.separation { color: #F1FA8C; }    /* Yellow for separation logic */
+.process { color: #FF5555; }       /* Red for process logic */
+.epistemic { color: #8BE9FD; }     /* Cyan for epistemic logic */
+.substructural { color: #50FA7B; } /* Green for substructural logic */
+
+/* Add specific styling for new blocks */
+.separation-block,
+.process-block,
+.epistemic-block,
+.substructural-block {
+    margin-bottom: var(--space-md);
+}
+
+.separation-block .separation,
+.process-block .process,
+.epistemic-block .epistemic,
+.substructural-block .substructural {
+    font-weight: 600;
+}
+
+/* Add subscript styling */
+sub {
+    font-size: 0.75em;
+    vertical-align: sub;
+    padding-left: 0.2em;
+}
+
+/* Add new color coding for additional logical systems */
+.intuitionistic { color: #BD93F9; }  /* Purple for intuitionistic logic */
+.game { color: #FFB86C; }           /* Orange for game logic */
+.hybrid { color: #FF79C6; }         /* Pink for hybrid logic */
+
+/* Add specific styling for new blocks */
+.intuitionistic-block,
+.temporal-epistemic-block,
+.game-block,
+.hybrid-block {
+    margin-bottom: var(--space-md);
+}
+
+.intuitionistic-block .intuitionistic,
+.temporal-epistemic-block .temporal,
+.game-block .game,
+.hybrid-block .hybrid {
+    font-weight: 600;
+}
+
+/* Logic Explainer Styling */
+.logic-explainer {
+    background: rgba(255,255,255,0.05);
+    padding: var(--space-md);
+    border-radius: 8px;
+    margin-bottom: var(--space-lg);
+}
+
+.logic-explainer p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+}
+
+.reading-list {
+    background: rgba(0,0,0,0.1);
+    padding: var(--space-md);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.reading-list::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg,
+        rgba(255,87,51,0.1),
+        rgba(40,42,54,0.1));
+    z-index: 0;
+}
+
+.reading-list h4 {
+    color: var(--primary-color);
+    margin-bottom: var(--space-sm);
+    font-size: 1rem;
+}
+
+.reading-list ul {
+    list-style: none;
+    padding-left: var(--space-md);
+}
+
+.reading-list li {
+    position: relative;
+    padding-left: var(--space-md);
+    margin-bottom: var(--space-xs);
+    font-size: 0.9rem;
+}
+
+.reading-list li::before {
+    content: "📚";
+    position: absolute;
+    left: -5px;
+}
+
+/* New Logic Type Colors */
+.probabilistic { color: #FF92DF; }  /* Pink for probabilistic logic */
+.description { color: #8BE9FD; }    /* Cyan for description logic */
+.deontic { color: #50FA7B; }        /* Green for deontic logic */
+.fuzzy { color: #FFB86C; }          /* Orange for fuzzy logic */
+
+/* Add specific styling for new blocks */
+.probabilistic-block,
+.description-block,
+.deontic-block,
+.fuzzy-block {
+    margin-bottom: var(--space-md);
+}
+
+/* Additional styling for explainer sections */
+.logic-explainer {
+    border-left: 4px solid var(--primary-color);
+}
+
+.logic-explainer p {
+    color: rgba(255,255,255,0.9);
+}
+
+/* Enhanced reading list styling */
+.reading-list {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: var(--space-md);
+}
+
+.reading-list li::before {
+    content: "📚";
+    margin-right: var(--space-sm);
+}
+
+/* Mathematical notation */
+.fuzzy sub {
+    color: inherit;
+    opacity: 0.8;
+}
+
+/* Hover effects for logical operators */
+.deontic, .fuzzy, .description {
+    transition: color 0.3s ease;
+}
+
+.deontic:hover, .fuzzy:hover, .description:hover {
+    color: var(--primary-color);
+    cursor: help;
+}
+
+/* Interactive Elements */
+.interactive-example {
+    background: rgba(40, 42, 54, 0.6);
+    border-radius: 8px;
+    padding: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.logic-playground {
+    display: grid;
+    gap: var(--space-md);
+    padding: var(--space-md);
+}
+
+.resource-bank {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.resource {
+    background: var(--primary-color);
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    cursor: grab;
+    user-select: none;
+}
+
+.drop-zone {
+    border: 2px dashed rgba(255,255,255,0.3);
+    min-height: 100px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.drop-zone.drag-over {
+    border-color: var(--primary-color);
+    background: rgba(255,87,51,0.1);
+}
+
+/* Practice Exercises */
+.exercise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+}
+
+.exercise-card {
+    background: rgba(40, 42, 54, 0.8);
+    border-radius: 8px;
+    padding: var(--space-md);
+}
+
+.logic-fill input {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--text-light);
+    padding: 0.5em;
+    border-radius: 4px;
+    width: 100%;
+}
+
+/* Visual Diagrams */
+.logic-diagram {
+    width: 100%;
+    height: auto;
+    background: rgba(40, 42, 54, 0.4);
+    border-radius: 8px;
+}
+
+.node-circle {
+    fill: rgba(255,87,51,0.2);
+    stroke: var(--primary-color);
+    stroke-width: 2;
+}
+
+.node text {
+    fill: var(--text-light);
+    text-anchor: middle;
+    dominant-baseline: middle;
+    font-size: 14px;
+}
+
+/* Enhanced Navigation */
+.logic-header {
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.difficulty-legend {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+}
+
+.difficulty {
+    font-size: 0.9rem;
+    padding: 0.25em 0.75em;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Difficulty Indicators */
+.difficulty {
+    font-size: 0.9rem;
+    padding: 0.25em 0.75em;
+    border-radius: 12px;
+}
+
+.beginner { background: rgba(80, 250, 123, 0.2); }
+.intermediate { background: rgba(255, 184, 108, 0.2); }
+.advanced { background: rgba(255, 85, 85, 0.2); }
+
+/* Remove the sticky positioning and overlay styles */
+.logic-navigation {
+    display: none; /* Remove entirely */
+}
+
+/* Hero Section */
+.hero {
+    background: rgba(40, 42, 54, 0.95);
+    padding: var(--space-xl) var(--space-lg);
+    border-radius: 12px;
+    margin-bottom: var(--space-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: #BD93F9;
+    margin-bottom: var(--space-lg);
+    line-height: 1.4;
+}
+
+.author-info {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.author-details {
+    font-size: 1.1rem;
+    color: #8BE9FD;
+}
+
+.date {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    margin-top: var(--space-xs);
+}
+
+/* Learning Path */
+.learning-path {
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.learning-path h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-md);
+    color: var(--text-light);
+}
+
+.path-levels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.level {
+    padding: var(--space-md);
+    background: rgba(40, 42, 54, 0.3);
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.level:hover {
+    transform: translateY(-2px);
+}
+
+.level-badge {
+    display: inline-block;
+    padding: 0.25em 0.75em;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    margin-bottom: var(--space-sm);
+}
+
+.level-badge.beginner {
+    background: rgba(80, 250, 123, 0.2);
+    color: #50FA7B;
+}
+
+.level-badge.intermediate {
+    background: rgba(255, 184, 108, 0.2);
+    color: #FFB86C;
+}
+
+.level-badge.advanced {
+    background: rgba(255, 85, 85, 0.2);
+    color: #FF5555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero {
+        padding: var(--space-lg) var(--space-md);
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .path-levels {
+        grid-template-columns: 1fr;
+    }
+}
