@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Dive: Pokémon Evolution Logic Systems</title>
+    <link rel="stylesheet" href="styles2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+    <!-- Replace everything above Executive Summary with this -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Understanding Logic Through Charizard</h1>
+            <p class="hero-subtitle">A Journey from Simple Truths to Complex Reasoning</p>
+
+            <div class="author-info">
+                <div class="author-details">
+                    <p>By Professor Oak</p>
+                    <p class="date">Last updated: 2024</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="learning-path">
+        <h2>Learning Journey</h2>
+        <div class="path-levels">
+            <div class="level">
+                <span class="level-badge beginner">Foundational</span>
+                <p>Propositional & Predicate Logic</p>
+            </div>
+            <div class="level">
+                <span class="level-badge intermediate">Intermediate</span>
+                <p>Modal & Temporal Logic</p>
+            </div>
+            <div class="level">
+                <span class="level-badge advanced">Advanced</span>
+                <p>Category Theory & Linear Logic</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Executive Summary Section -->
+    <section class="card-container">
+        <h2>Executive Summary</h2>
+        <p>This document formalizes Pokémon evolution systems and Charizard's development using predicate logic and mathematical notation.</p>
+    </section>
+
+    <!-- Add this after the executive summary and before the evolution logic section -->
+    <section class="card-container context-section">
+        <h3>Evolution State Context</h3>
+        <div class="context-grid">
+            <div class="context-card">
+                <h4>Pokémon Evolution Basics</h4>
+                <p>In the Pokémon world, evolution represents a dramatic transformation where a Pokémon changes form, typically becoming larger and more powerful. Unlike biological evolution, these changes occur within a single individual's lifetime.</p>
+            </div>
+            <div class="context-card">
+                <h4>The Charmander Line</h4>
+                <p>The Charmander evolutionary line represents one of the most iconic transformations in Pokémon:</p>
+                <ul class="evolution-chain">
+                    <li><span class="stage">Stage 1:</span> Charmander - A small fire lizard with a flame on its tail</li>
+                    <li><span class="stage">Stage 2:</span> Charmeleon - A larger, more aggressive form</li>
+                    <li><span class="stage">Stage 3:</span> Charizard - The final form, a dragon-like creature</li>
+                </ul>
+            </div>
+            <div class="context-card">
+                <h4>Key Characteristics</h4>
+                <ul class="characteristics">
+                    <li>The tail flame is vital - it represents life force and emotional state</li>
+                    <li>Each evolution increases size and power substantially</li>
+                    <li>The final form gains flight capabilities</li>
+                    <li>Special Attack becomes the dominant offensive stat</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evolution Logic Section -->
+    <section class="card-container">
+        <h3>1.1 Evolution State Predicates</h3>
+
+        <!-- Charmander Evolution Logic -->
+        <div class="logic-statement">
+            <div class="logic-expression" role="math" aria-label="Logical expression">
+                <div class="line">
+                    <span class="quantifier">∀</span><span class="variable">p</span> <span class="operator" role="text" aria-label="implies">→</span> <span class="constant">Pokemon</span> <span class="bracket">[</span>
+                </div>
+                <div class="line">
+                    <span class="predicate">isCharmander</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span> <span class="operator">∧</span>
+                </div>
+                <div class="line">
+                    <span class="predicate">level</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span> <span class="operator">≥</span> <span class="constant">16</span> <span class="operator" role="text" aria-label="implies">→</span>
+                </div>
+                <div class="line">
+                    <span class="quantifier">∃</span><span class="variable">t</span> <span class="operator" role="text" aria-label="exists">∈</span> <span class="constant">Time</span> <span class="bracket">[</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="predicate">evolves</span><span class="bracket">(</span><span class="variable">p</span>, <span class="constant">Charmeleon</span>, <span class="variable">t</span><span class="bracket">)</span> <span class="operator">∧</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="predicate">preserves</span><span class="bracket">(</span><span class="predicate">tailFlame</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">))</span>
+                </div>
+                <div class="line">
+                    <span class="bracket">]</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="quantifier-block">
+                        <span class="logic-label">Universal Quantifier:</span>
+                        <span>For any Pokémon <span class="variable">p</span></span>
+                    </div>
+                    <div class="condition-block">
+                        <span class="logic-label">Conditions:</span>
+                        <ul>
+                            <li><span class="predicate">p is a Charmander</span></li>
+                            <li><span class="predicate">p's level</span> is at least <span class="constant">16</span></li>
+                        </ul>
+                    </div>
+                    <div class="implication-block">
+                        <span class="logic-label">Implies:</span>
+                        <ul>
+                            <li>There exists a time <span class="variable">t</span> when:</li>
+                            <li class="indent-1"><span class="predicate">p evolves into</span> <span class="constant">Charmeleon</span></li>
+                            <li class="indent-1"><span class="predicate">p's tail flame</span> is preserved</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charmeleon Evolution Logic -->
+        <div class="logic-statement">
+            <div class="logic-expression" role="math" aria-label="Logical expression">
+                <div class="line">
+                    <span class="quantifier">∀</span><span class="variable">p</span> <span class="operator" role="text" aria-label="exists">∈</span> <span class="constant">Pokemon</span> <span class="bracket">[</span>
+                </div>
+                <div class="line">
+                    <span class="predicate">isCharmeleon</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span> <span class="operator">∧</span>
+                </div>
+                <div class="line">
+                    <span class="predicate">level</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span> <span class="operator">≥</span> <span class="constant">36</span> <span class="operator" role="text" aria-label="implies">→</span>
+                </div>
+                <div class="line">
+                    <span class="quantifier">∃</span><span class="variable">t</span> <span class="operator" role="text" aria-label="exists">∈</span> <span class="constant">Time</span> <span class="bracket">[</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="predicate">evolves</span><span class="bracket">(</span><span class="variable">p</span>, <span class="constant">Charizard</span>, <span class="variable">t</span><span class="bracket">)</span> <span class="operator">∧</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="predicate">gains</span><span class="bracket">(</span><span class="variable">p</span>, <span class="constant">Flying</span><span class="bracket">)</span> <span class="operator">∧</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="quantifier">∀</span><span class="variable">s</span> <span class="operator" role="text" aria-label="exists">∈</span> <span class="constant">Stats</span> <span class="bracket">[</span>
+                </div>
+                <div class="line indent-2">
+                    <span class="predicate">increases</span><span class="bracket">(</span><span class="variable">s</span><span class="bracket">)</span> <span class="operator">∧</span>
+                </div>
+                <div class="line indent-2">
+                    <span class="predicate">specialAttack</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="greater than">></span> <span class="predicate">attack</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="bracket">]]</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="quantifier-block">
+                        <span class="logic-label">Universal Quantifier:</span>
+                        <span>For any Pokémon <span class="variable">p</span></span>
+                    </div>
+                    <div class="condition-block">
+                        <span class="logic-label">Conditions:</span>
+                        <ul>
+                            <li><span class="predicate">p is a Charmeleon</span></li>
+                            <li><span class="predicate">p's level</span> is at least <span class="constant">36</span></li>
+                        </ul>
+                    </div>
+                    <div class="implication-block">
+                        <span class="logic-label">Implies:</span>
+                        <ul>
+                            <li>There exists a time <span class="variable">t</span> when:</li>
+                            <li class="indent-1"><span class="predicate">p evolves into</span> <span class="constant">Charizard</span></li>
+                            <li class="indent-1"><span class="predicate">p gains</span> type <span class="constant">Flying</span></li>
+                            <li class="indent-1">For all stats <span class="variable">s</span>:</li>
+                            <li class="indent-2"><span class="predicate">s increases</span></li>
+                            <li class="indent-2"><span class="predicate">Special Attack</span> becomes greater than <span class="predicate">Attack</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional sections can be added here following the same pattern -->
+
+    <section class="card-container" id="propositional">
+        <div class="section-metadata">
+            <span class="difficulty beginner">⭐ Foundational</span>
+            <span class="prerequisites">Prerequisites: None</span>
+        </div>
+        <h3>1.1 Basic Propositional Logic</h3>
+        <div class="logic-explainer">
+            <p>Propositional logic is the foundation of formal reasoning, dealing with simple statements that can be true or false and the logical connections between them.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Logic: The Laws of Truth" by Nicholas J.J. Smith</li>
+                    <li>"A Mathematical Introduction to Logic" by Herbert B. Enderton</li>
+                    <li>"Language, Proof and Logic" by Barwise and Etchemendy</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="predicate">isCharizard</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="implies">→</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="predicate">hasTailFlame</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="implication-block">
+                        <span class="logic-label">Simple Implication:</span>
+                        <ul>
+                            <li>If <span class="predicate">p is a Charizard</span></li>
+                            <li class="indent-1">Then <span class="predicate">p has a tail flame</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="bracket">(</span><span class="predicate">isCharizard</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="and">∧</span>
+                </div>
+                <div class="line">
+                    <span class="predicate">isHealthy</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="implies">→</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="predicate">canFly</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="implication-block">
+                        <span class="logic-label">Compound Implication:</span>
+                        <ul>
+                            <li>If <span class="predicate">p is a Charizard</span> AND</li>
+                            <li><span class="predicate">p is healthy</span></li>
+                            <li class="indent-1">Then <span class="predicate">p can fly</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add learning objectives -->
+        <div class="learning-objectives">
+            <h4>After this section, you will understand:</h4>
+            <ul>
+                <li>The basic principles of propositional logic</li>
+                <li>How to construct valid logical arguments</li>
+                <li>The relationship between different logic systems</li>
+            </ul>
+        </div>
+
+        <!-- Add summary sections -->
+        <div class="section-summary">
+            <h4>Key Takeaways:</h4>
+            <ul>
+                <li>Logic systems build upon each other</li>
+                <li>Each system has specific use cases</li>
+                <li>Pokémon mechanics demonstrate logical concepts</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="card-container">
+        <h3>1.2 Predicate Logic</h3>
+        <div class="logic-explainer">
+            <p>Predicate logic extends propositional logic by adding quantifiers and predicates, allowing us to express more complex relationships and make statements about collections of objects.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"First-Order Logic" by Raymond M. Smullyan</li>
+                    <li>"Predicate Logic: A Semantic Approach" by John L. Bell</li>
+                    <li>"Logic for Mathematics and Computer Science" by Stanley Burris</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="quantifier">∀</span><span class="variable">p</span> <span class="bracket">[</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="predicate">isCharizard</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="implies">→</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="quantifier">∃</span><span class="variable">f</span> <span class="bracket">[</span>
+                </div>
+                <div class="line indent-2">
+                    <span class="predicate">hasFlame</span><span class="bracket">(</span><span class="variable">p</span>, <span class="variable">f</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="and">∧</span>
+                </div>
+                <div class="line indent-2">
+                    <span class="predicate">isHot</span><span class="bracket">(</span><span class="variable">f</span><span class="bracket">)</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="bracket">]</span>
+                </div>
+                <div class="line">
+                    <span class="bracket">]</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="quantifier-block">
+                        <span class="logic-label">Universal Statement:</span>
+                        <ul>
+                            <li>For all creatures <span class="variable">p</span>:</li>
+                            <li class="indent-1">If <span class="predicate">p is a Charizard</span></li>
+                            <li class="indent-1">Then there exists a flame <span class="variable">f</span> where:</li>
+                            <li class="indent-2"><span class="predicate">p has flame f</span></li>
+                            <li class="indent-2"><span class="predicate">f is hot</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add after existing sections -->
+
+    <section class="card-container">
+        <h3>1.3 Modal Logic</h3>
+        <div class="logic-explainer">
+            <p>Modal logic introduces operators for necessity and possibility, perfect for reasoning about what must be true and what could be true in different situations.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"An Introduction to Modal Logic" by Hughes and Cresswell</li>
+                    <li>"Modal Logic for Philosophers" by James W. Garson</li>
+                    <li>"Handbook of Modal Logic" by Patrick Blackburn et al.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="modal">□</span><span class="bracket">(</span><span class="predicate">isCharizard</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="implies">→</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="modal">◇</span><span class="predicate">canMegaEvolve</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">))</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="modal-block">
+                        <span class="logic-label">Modal Statement:</span>
+                        <ul>
+                            <li>It is <span class="modal">necessary</span> that:</li>
+                            <li class="indent-1">If <span class="predicate">p is a Charizard</span></li>
+                            <li class="indent-1">Then it is <span class="modal">possible</span> that <span class="predicate">p can Mega Evolve</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-container">
+        <h3>1.4 Temporal Logic: Evolution Sequences</h3>
+        <div class="logic-explainer">
+            <p>Temporal logic deals with time-related properties and relationships, useful for reasoning about events and their timing.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Temporal Logic" by Amir Pnueli and Moshe Y. Vardi</li>
+                    <li>"Temporal Logic: Mathematical Foundations and Computational Aspects" by Hans-Jörg Kreowski and Peter H. Schmitt</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="temporal">G</span><span class="bracket">[</span><span class="predicate">isCharizard</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="implies">→</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="temporal">H</span><span class="bracket">(</span><span class="predicate">wasCharmeleon</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="and">∧</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="temporal">H</span><span class="predicate">wasCharmander</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">))</span><span class="bracket">]</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="temporal-block">
+                        <span class="logic-label">Temporal Statement:</span>
+                        <ul>
+                            <li><span class="temporal">Globally</span> (at all future times):</li>
+                            <li class="indent-1">If <span class="predicate">p is a Charizard</span></li>
+                            <li class="indent-1">Then in the <span class="temporal">past</span>:</li>
+                            <li class="indent-2"><span class="predicate">p was a Charmeleon</span> AND</li>
+                            <li class="indent-2">even earlier, <span class="predicate">p was a Charmander</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-container">
+        <h3>1.5 Type Theory: Pokémon Types</h3>
+        <div class="logic-explainer">
+            <p>Type theory deals with the classification and properties of objects, useful for understanding Pokémon types and their interactions.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Type Theory: A Unified Approach to the Foundations of Mathematics" by Peter Aczel</li>
+                    <li>"An Introduction to Type Theory" by Michael A. E. Dummett</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="quantifier">∀</span><span class="variable">p</span><span class="operator">:</span><span class="type">Charizard</span> <span class="bracket">[</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="type">Fire</span> <span class="operator" role="text" aria-label="times">×</span> <span class="type">Flying</span> <span class="operator" role="text" aria-label="implies">⊢</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="predicate">type</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span>
+                </div>
+                <div class="line">
+                    <span class="bracket">]</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="type-block">
+                        <span class="logic-label">Type Judgment:</span>
+                        <ul>
+                            <li>For all <span class="variable">p</span> of type <span class="type">Charizard</span>:</li>
+                            <li class="indent-1">The product type <span class="type">Fire</span> × <span class="type">Flying</span></li>
+                            <li class="indent-1">Types the expression <span class="predicate">type</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add after existing sections -->
+
+    <section class="card-container">
+        <h3>1.6 Linear Logic: Resource Management</h3>
+        <div class="logic-explainer">
+            <p>Linear logic deals with resource management and distribution, useful for reasoning about game mechanics and resource allocation.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Linear Logic: A New Approach to Concurrent Logic" by Jean-Yves Girard</li>
+                    <li>"Linear Logic and Non-Classical Logic" by Jean-Yves Girard</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="linear">!</span><span class="predicate">hasPP</span><span class="bracket">(</span><span class="variable">m</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="times">⊗</span>
+                </div>
+                <div class="line">
+                    <span class="predicate">hasMove</span><span class="bracket">(</span><span class="variable">p</span>, <span class="constant">FireBlast</span><span class="bracket">)</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="linear">⊸</span> <span class="predicate">canUseMove</span><span class="bracket">(</span><span class="variable">p</span>, <span class="constant">FireBlast</span><span class="bracket">)</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="linear-block">
+                        <span class="logic-label">Linear Resource Usage:</span>
+                        <ul>
+                            <li>With <span class="linear">reusable</span> PP points for move <span class="variable">m</span></li>
+                            <li><span class="operator">combined with</span></li>
+                            <li>Having <span class="constant">Fire Blast</span> in moveset</li>
+                            <li class="indent-1"><span class="linear">linearly implies</span> ability to use the move</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-container">
+        <h3>1.7 Higher-Order Logic: Move Inheritance</h3>
+        <div class="logic-explainer">
+            <p>Higher-order logic deals with functions and their properties, useful for reasoning about move inheritance and polymorphism.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Higher-Order Logic" by Jean-Yves Girard</li>
+                    <li>"Higher-Order Logic: A Gentle Introduction" by John C. Mitchell</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="quantifier">∀</span><span class="variable">P</span><span class="bracket">(</span><span class="type">Move</span> <span class="operator" role="text" aria-label="implies">→</span> <span class="type">Prop</span><span class="bracket">)</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="bracket">[</span><span class="variable">P</span><span class="bracket">(</span><span class="constant">DragonClaw</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="implies">→</span>
+                </div>
+                <div class="line indent-2">
+                    <span class="predicate">canLearn</span><span class="bracket">(</span><span class="constant">Charizard</span>, <span class="variable">P</span><span class="bracket">)]</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="higher-order-block">
+                        <span class="logic-label">Higher-Order Statement:</span>
+                        <ul>
+                            <li>For all properties <span class="variable">P</span> of moves:</li>
+                            <li class="indent-1">If <span class="variable">P</span> holds for <span class="constant">Dragon Claw</span></li>
+                            <li class="indent-1">Then <span class="constant">Charizard</span> can learn moves with property <span class="variable">P</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-container">
+        <h3>1.8 Category Theory: Evolution Functors</h3>
+        <div class="logic-explainer">
+            <p>Category theory deals with structures and relationships between objects, useful for understanding evolution functors and their properties.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Category Theory: A First Course" by Peter J. Freyd</li>
+                    <li>"Categories for the Working Mathematician" by Saunders Mac Lane</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="category">F</span><span class="operator">:</span> <span class="category">Basic</span> <span class="operator" role="text" aria-label="implies">→</span> <span class="category">Evolved</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="category">F</span><span class="bracket">(</span><span class="constant">Charmander</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="equals">=</span> <span class="constant">Charmeleon</span>
+                </div>
+                <div class="line">
+                    <span class="category">G</span><span class="operator">:</span> <span class="category">Evolved</span> <span class="operator" role="text" aria-label="implies">→</span> <span class="category">Final</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="category">G</span><span class="bracket">(</span><span class="constant">Charmeleon</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="equals">=</span> <span class="constant">Charizard</span>
+                </div>
+                <div class="line">
+                    <span class="category">G</span> <span class="operator" role="text" aria-label="composition">∘</span> <span class="category">F</span> <span class="operator">:</span> <span class="category">Basic</span> <span class="operator" role="text" aria-label="implies">→</span> <span class="category">Final</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="category-block">
+                        <span class="logic-label">Categorical Evolution:</span>
+                        <ul>
+                            <li>Functor <span class="category">F</span> maps from <span class="category">Basic</span> to <span class="category">Evolved</span></li>
+                            <li class="indent-1">Mapping <span class="constant">Charmander</span> to <span class="constant">Charmeleon</span></li>
+                            <li>Functor <span class="category">G</span> maps from <span class="category">Evolved</span> to <span class="category">Final</span></li>
+                            <li class="indent-1">Mapping <span class="constant">Charmeleon</span> to <span class="constant">Charizard</span></li>
+                            <li>Their composition describes the complete evolution chain</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add after existing sections -->
+
+    <section class="card-container">
+        <h3>1.9 Separation Logic: Battle States</h3>
+        <div class="logic-explainer">
+            <p>Separation logic deals with the separation of resources and states, useful for reasoning about game mechanics and battle scenarios.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Separation Logic: A Logical Basis for Provenance" by John C. Mitchell</li>
+                    <li>"Separation Logic: A Modal Logic for Shared Memory" by John C. Mitchell</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="separation">{</span><span class="predicate">hp</span><span class="bracket">(</span><span class="variable">p</span>, 100<span class="bracket">)</span> <span class="separation" role="text" aria-label="times">∗</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="predicate">pp</span><span class="bracket">(</span><span class="constant">FireBlast</span>, 5<span class="bracket">)</span><span class="separation" role="text" aria-label="times">∗</span>
+                </div>
+                <div class="line">
+                    <span class="predicate">useMove</span><span class="bracket">(</span><span class="variable">p</span>, <span class="constant">FireBlast</span><span class="bracket">)</span>
+                </div>
+                <div class="line">
+                    <span class="separation">{</span><span class="predicate">hp</span><span class="bracket">(</span><span class="variable">p</span>, 100<span class="bracket">)</span> <span class="separation" role="text" aria-label="times">∗</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="predicate">pp</span><span class="bracket">(</span><span class="constant">FireBlast</span>, 4<span class="bracket">)</span><span class="separation" role="text" aria-label="times">∗</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="separation-block">
+                        <span class="logic-label">State Separation:</span>
+                        <ul>
+                            <li>Pre-condition: <span class="separation">separately</span></li>
+                            <li class="indent-1">Charizard has 100 HP</li>
+                            <li class="indent-1">Fire Blast has 5 PP</li>
+                            <li>Action: Use Fire Blast</li>
+                            <li>Post-condition: <span class="separation">separately</span></li>
+                            <li class="indent-1">Charizard still has 100 HP</li>
+                            <li class="indent-1">Fire Blast now has 4 PP</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-container">
+        <h3>1.10 Process Logic: Move Sequences</h3>
+        <div class="logic-explainer">
+            <p>Process logic deals with sequences of actions and their execution, useful for reasoning about move sequences and game mechanics.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Process Logic" by John C. Mitchell</li>
+                    <li>"Process Logic: A Modal Logic for Action" by John C. Mitchell</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="process">⟨</span><span class="predicate">dragonDance</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span><span class="process">⟩</span> <span class="process" role="text" aria-label="semicolon">;</span>
+                </div>
+                <div class="line">
+                    <span class="process">⟨</span><span class="predicate">fireBlast</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span> <span class="process" role="text" aria-label="plus">+</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="predicate">airSlash</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span><span class="process">⟩</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="process-block">
+                        <span class="logic-label">Process Sequence:</span>
+                        <ul>
+                            <li>First execute Dragon Dance</li>
+                            <li>Then choose between:</li>
+                            <li class="indent-1">Fire Blast</li>
+                            <li class="indent-1">Air Slash</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-container">
+        <h3>1.11 Epistemic Logic: Trainer Knowledge</h3>
+        <div class="logic-explainer">
+            <p>Epistemic logic deals with knowledge and belief, useful for reasoning about trainer knowledge and decision-making.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Epistemic Logic" by John C. Mitchell</li>
+                    <li>"Epistemic Logic: A New Approach to Knowledge and Belief" by John C. Mitchell</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="epistemic">K</span><sub>t</sub><span class="bracket">[</span><span class="predicate">weakness</span><span class="bracket">(</span><span class="variable">p</span>, <span class="constant">Water</span><span class="bracket">)</span><span class="bracket">]</span>
+                </div>
+                <div class="line">
+                    <span class="operator" role="text" aria-label="implies">→</span> <span class="epistemic">B</span><sub>t</sub><span class="bracket">[</span><span class="predicate">shouldSwitch</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span><span class="bracket">]</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="epistemic-block">
+                        <span class="logic-label">Knowledge and Belief:</span>
+                        <ul>
+                            <li>If trainer <span class="epistemic">knows</span> Charizard is weak to Water</li>
+                            <li>Then trainer <span class="epistemic">believes</span> they should switch</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-container">
+        <h3>1.12 Substructural Logic: Status Effects</h3>
+        <div class="logic-explainer">
+            <p>Substructural logic deals with the separation of resources and states, useful for reasoning about game mechanics and battle scenarios.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Separation Logic: A Logical Basis for Provenance" by John C. Mitchell</li>
+                    <li>"Separation Logic: A Modal Logic for Shared Memory" by John C. Mitchell</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="substructural">!</span><span class="predicate">burned</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span>
+                </div>
+                <div class="line">
+                    <span class="substructural">⊗</span> <span class="predicate">paralyzed</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span>
+                </div>
+                <div class="line">
+                    <span class="substructural">⊸</span> <span class="predicate">multipleStatus</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="substructural-block">
+                        <span class="logic-label">Resource Management:</span>
+                        <ul>
+                            <li><span class="substructural">Persistent</span> burn status</li>
+                            <li><span class="substructural">Combined with</span> paralysis status</li>
+                            <li><span class="substructural">Consumes</span> to create multiple status condition</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add after existing sections -->
+
+    <section class="card-container">
+        <h3>1.13 Intuitionistic Logic: Move Effectiveness</h3>
+        <div class="logic-explainer">
+            <p>Intuitionistic logic deals with constructive reasoning and proof, useful for reasoning about move effectiveness and game mechanics.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Intuitionistic Logic" by John C. Mitchell</li>
+                    <li>"Intuitionistic Logic: A New Approach to Knowledge and Belief" by John C. Mitchell</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="intuitionistic">¬¬</span><span class="predicate">superEffective</span><span class="bracket">(</span><span class="variable">m</span><span class="bracket">)</span>
+                </div>
+                <div class="line">
+                    <span class="operator" role="text" aria-label="implies">⊬</span>
+                </div>
+                <div class="line">
+                    <span class="predicate">superEffective</span><span class="bracket">(</span><span class="variable">m</span><span class="bracket">)</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="intuitionistic-block">
+                        <span class="logic-label">Constructive Reasoning:</span>
+                        <ul>
+                            <li>The statement "It's not the case that the move is not super effective"</li>
+                            <li class="indent-1">Does <span class="intuitionistic">not necessarily imply</span></li>
+                            <li class="indent-1">That the move is super effective</li>
+                            <li class="indent-1">(We need constructive proof of effectiveness)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-container">
+        <h3>1.14 Temporal-Epistemic Logic: Strategy Planning</h3>
+        <div class="logic-explainer">
+            <p>Temporal-epistemic logic deals with time-related properties and relationships, useful for reasoning about strategy planning and game mechanics.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Temporal-Epistemic Logic" by John C. Mitchell</li>
+                    <li>"Temporal-Epistemic Logic: A Modal Logic for Action" by John C. Mitchell</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="epistemic">K</span><sub>t</sub><span class="bracket">[</span><span class="predicate">hasMove</span><span class="bracket">(</span><span class="variable">p</span>, <span class="constant">DragonDance</span><span class="bracket">)</span><span class="bracket">]</span>
+                </div>
+                <div class="line">
+                    <span class="operator" role="text" aria-label="implies">→</span> <span class="temporal">F</span><span class="epistemic">B</span><sub>t</sub><span class="bracket">[</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="predicate">shouldUse</span><span class="bracket">(</span><span class="variable">p</span>, <span class="constant">DragonDance</span><span class="bracket">)</span>
+                </div>
+                <div class="line">
+                    <span class="bracket">]</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="temporal-epistemic-block">
+                        <span class="logic-label">Knowledge Over Time:</span>
+                        <ul>
+                            <li>If trainer <span class="epistemic">knows</span> Charizard has Dragon Dance</li>
+                            <li>Then at some <span class="temporal">future</span> point</li>
+                            <li class="indent-1">Trainer will <span class="epistemic">believe</span> they should use it</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-container">
+        <h3>1.15 Game Logic: Battle Scenarios</h3>
+        <div class="logic-explainer">
+            <p>Game logic deals with strategic reasoning and game mechanics, useful for reasoning about battle scenarios and game mechanics.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Game Logic" by John C. Mitchell</li>
+                    <li>"Game Logic: A Modal Logic for Action" by John C. Mitchell</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="game">⟪</span><span class="variable">t</span><span class="game">⟫</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="bracket">(</span><span class="predicate">useMove</span><span class="bracket">(</span><span class="constant">DragonDance</span><span class="bracket">)</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="game">·</span> <span class="predicate">attack</span><span class="bracket">(</span><span class="constant">FireBlast</span><span class="bracket">))</span>
+                </div>
+                <div class="line">
+                    <span class="game">⟪</span><span class="variable">o</span><span class="game">⟫</span><span class="predicate">win</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="game-block">
+                        <span class="logic-label">Strategic Reasoning:</span>
+                        <ul>
+                            <li>Trainer <span class="variable">t</span> has a strategy:</li>
+                            <li class="indent-1">First use Dragon Dance</li>
+                            <li class="indent-1">Then use Fire Blast</li>
+                            <li>Against any opponent strategy <span class="variable">o</span></li>
+                            <li class="indent-1">This leads to victory</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-container">
+        <h3>1.16 Hybrid Logic: Form Changes</h3>
+        <div class="logic-explainer">
+            <p>Hybrid logic deals with the combination of different forms and their properties, useful for reasoning about form changes and game mechanics.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Hybrid Logic" by John C. Mitchell</li>
+                    <li>"Hybrid Logic: A Modal Logic for Action" by John C. Mitchell</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="hybrid">@</span><sub>base</sub><span class="bracket">[</span><span class="predicate">isCharizard</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="operator" role="text" aria-label="and">∧</span> <span class="hybrid">⟨mega-x⟩</span><span class="predicate">isDragonType</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="operator" role="text" aria-label="and">∧</span> <span class="hybrid">⟨mega-y⟩</span><span class="predicate">hasDrought</span><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span><span class="bracket">]</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="hybrid-block">
+                        <span class="logic-label">Form States:</span>
+                        <ul>
+                            <li><span class="hybrid">At base form</span>:</li>
+                            <li class="indent-1">p is a Charizard</li>
+                            <li><span class="hybrid">In Mega-X form</span>:</li>
+                            <li class="indent-1">p gains Dragon type</li>
+                            <li><span class="hybrid">In Mega-Y form</span>:</li>
+                            <li class="indent-1">p gains Drought ability</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-container">
+        <h3>1.17 Probabilistic Logic: Accuracy and Critical Hits</h3>
+        <div class="logic-explainer">
+            <p>Probabilistic logic deals with numerical uncertainties and chance elements, useful for reasoning about accuracy and critical hits.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Probabilistic Logic and Probabilistic Networks" by Rolf Haenni</li>
+                    <li>"Reasoning About Uncertainty" by Joseph Y. Halpern</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="probabilistic">P</span><span class="bracket">(</span><span class="predicate">hits</span><span class="bracket">(</span><span class="constant">FireBlast</span><span class="bracket">)</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="equals">=</span> 0.85
+                </div>
+                <div class="line">
+                    <span class="probabilistic">P</span><span class="bracket">(</span><span class="predicate">critical</span> <span class="operator" role="text" aria-label="or">|</span> <span class="predicate">hits</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="equals">=</span> 0.0625
+                </div>
+                <div class="line">
+                    <span class="probabilistic">P</span><span class="bracket">(</span><span class="predicate">critical</span> <span class="operator" role="text" aria-label="and">∧</span> <span class="predicate">hits</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="equals">=</span>
+                </div>
+                <div class="line indent-1">
+                    0.85 <span class="operator" role="text" aria-label="times">×</span> 0.0625
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="probabilistic-block">
+                        <span class="logic-label">Probability Calculation:</span>
+                        <ul>
+                            <li>Fire Blast has 85% accuracy</li>
+                            <li>Given it hits, 6.25% chance of critical hit</li>
+                            <li>Therefore, probability of critical hit that lands:</li>
+                            <li class="indent-1">85% × 6.25% = 5.31%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add after existing sections -->
+
+    <section class="card-container">
+        <h3>1.18 Description Logic: Pokémon Classification</h3>
+        <div class="logic-explainer">
+            <p>Description Logic formalizes knowledge representation and reasoning about concepts and their relationships. It's particularly useful for taxonomies and classifications.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"The Description Logic Handbook" by Baader, Calvanese, et al.</li>
+                    <li>"An Introduction to Description Logics" by Nardi and Brachman</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="description">Charizard</span> <span class="operator" role="text" aria-label="implies">⊑</span> <span class="description">FireType</span> <span class="operator" role="text" aria-label="and">⊓</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="description">FlyingType</span> <span class="operator" role="text" aria-label="and">⊓</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="description">∃</span><span class="predicate">hasAbility</span><span class="bracket">.</span><span class="constant">Blaze</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="description-block">
+                        <span class="logic-label">Concept Description:</span>
+                        <ul>
+                            <li>Charizard is a subclass of:</li>
+                            <li class="indent-1">Fire-type AND</li>
+                            <li class="indent-1">Flying-type AND</li>
+                            <li class="indent-1">Something that has ability Blaze</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-container">
+        <h3>1.19 Deontic Logic: Battle Rules</h3>
+        <div class="logic-explainer">
+            <p>Deontic Logic deals with obligations, permissions, and prohibitions. It's perfect for expressing game rules and battle regulations.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Deontic Logic: A Comprehensive Appraisal" by Risto Hilpinen</li>
+                    <li>"Norm and Action" by Georg Henrik von Wright</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="deontic">O</span><span class="bracket">[</span><span class="predicate">selectMove</span><span class="bracket">(</span><span class="variable">t</span><span class="bracket">)</span><span class="bracket">]</span> <span class="operator" role="text" aria-label="and">∧</span>
+                </div>
+                <div class="line">
+                    <span class="deontic">F</span><span class="bracket">[</span><span class="predicate">useMultiple</span><span class="bracket">(</span><span class="variable">t</span><span class="bracket">)</span><span class="bracket">]</span> <span class="operator" role="text" aria-label="and">∧</span>
+                </div>
+                <div class="line">
+                    <span class="deontic">P</span><span class="bracket">[</span><span class="predicate">switch</span><span class="bracket">(</span><span class="variable">t</span><span class="bracket">)</span><span class="bracket">]</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="deontic-block">
+                        <span class="logic-label">Battle Rules:</span>
+                        <ul>
+                            <li>It is <span class="deontic">obligatory</span> to select a move</li>
+                            <li>It is <span class="deontic">forbidden</span> to use multiple moves</li>
+                            <li>It is <span class="deontic">permitted</span> to switch Pokémon</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-container">
+        <h3>1.20 Fuzzy Logic: Status Effect Intensities</h3>
+        <div class="logic-explainer">
+            <p>Fuzzy Logic handles degrees of truth rather than binary true/false values, making it ideal for representing gradual effects and partial states.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Fuzzy Sets and Fuzzy Logic" by George J. Klir</li>
+                    <li>"Fuzzy Logic with Engineering Applications" by Timothy J. Ross</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logic-statement">
+            <div class="logic-expression">
+                <div class="line">
+                    <span class="fuzzy">μ</span><sub>burned</sub><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="equals">=</span> 0.5
+                </div>
+                <div class="line">
+                    <span class="fuzzy">μ</span><sub>weakened</sub><span class="bracket">(</span><span class="variable">p</span><span class="bracket">)</span> <span class="operator" role="text" aria-label="equals">=</span>
+                </div>
+                <div class="line indent-1">
+                    <span class="fuzzy">min</span><span class="bracket">(</span>1, <span class="fuzzy">μ</span><sub>burned</sub> <span class="operator" role="text" aria-label="plus">+</span> 0.3<span class="bracket">)</span>
+                </div>
+            </div>
+            <div class="natural-language">
+                <div class="translation-header">Natural Language Translation</div>
+                <div class="translation-main">
+                    <div class="fuzzy-block">
+                        <span class="logic-label">Fuzzy Membership:</span>
+                        <ul>
+                            <li>Charizard is burned to degree 0.5</li>
+                            <li>Weakness level is calculated as:</li>
+                            <li class="indent-1">Minimum of 1 and (burn + 0.3)</li>
+                            <li class="indent-1">Results in 0.8 weakness degree</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add after existing sections -->
+
+    <section class="card-container">
+        <h3>1.4 Linear Logic</h3>
+        <div class="logic-explainer">
+            <p>Linear logic treats logical formulas as resources that must be consumed when used, perfect for modeling game mechanics where resources are limited.</p>
+            <div class="reading-list">
+                <h4>Further Reading:</h4>
+                <ul>
+                    <li>"Linear Logic" by Jean-Yves Girard</li>
+                    <li>"Proof Theory of Linear Logic" by A.S. Troelstra</li>
+                </ul>
+            </div>
+            <div class="interactive-example" role="application"
+                 aria-label="Interactive logic playground"
+                 tabindex="0">
+                <h4>Try It Yourself:</h4>
+                <div class="logic-playground">
+                    <div class="resource-bank">
+                        <span class="resource" draggable="true">PP(5)</span>
+                        <span class="resource" draggable="true">Move(FireBlast)</span>
+                    </div>
+                    <div class="consumption-area">
+                        <p>Drag resources to use them:</p>
+                        <div class="drop-zone" data-accepts="PP,Move">
+                            <!-- Interactive drop zone -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Existing logic-statement remains the same -->
+    </section>
+
+    <section class="card-container practice-section">
+        <h3>Practice Exercises</h3>
+        <div class="exercise-grid">
+            <div class="exercise-card">
+                <h4>Basic Logic</h4>
+                <div class="exercise">
+                    <p>Complete the inference:</p>
+                    <div class="logic-fill">
+                        <p>If Charizard is a Fire type, then it can learn Flamethrower</p>
+                        <p>Charizard is a Fire type</p>
+                        <p>Therefore: <input type="text" data-answer="Charizard can learn Flamethrower"></p>
+                    </div>
+                    <button class="check-answer">Check</button>
+                </div>
+            </div>
+            <!-- More exercise cards -->
+        </div>
+    </section>
+
+    <section class="card-container visual-section">
+        <h3>Visual Logic Diagrams</h3>
+        <div class="diagram-container">
+            <svg class="logic-diagram" viewBox="0 0 500 300">
+                <!-- SVG diagram elements will be added here -->
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7"
+                    refX="9" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#FF79C6"/>
+                    </marker>
+                </defs>
+                <!-- Example logical relationship -->
+                <g class="node" transform="translate(100,150)">
+                    <circle r="40" class="node-circle"/>
+                    <text x="0" y="0">Charizard</text>
+                </g>
+                <!-- More nodes and relationships -->
+            </svg>
+        </div>
+    </section>
+</main>
+
+<script>
+    // Initialize KaTeX
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ],
+            throwOnError: false,
+            output: 'html',
+            strict: false
+        });
+    });
+
+    // Collapsible functionality
+    document.querySelectorAll('.collapsible').forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.toggle('active');
+            const content = button.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    });
+</script>
+</body>
+</html>
